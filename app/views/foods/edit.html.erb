@@ -1,0 +1,54 @@
+<div class="main">
+  <div class="card mt-2 w-75 mx-auto">
+    <div class="form-group text-center mt-4">
+      <h2 class="text-secondary">材料登録</h2>
+    </div>
+    <%# TODO: 名前が一緒の時、空の時にエラー吐くようにする idea：redirectをshowに送る→なければエラー %>
+    <div class="form-wrap m-2">
+      <%= form_with model: @food do |f| %>
+        <div class="form-group text-center w-50 mx-auto mt-2">
+          <%= f.text_field :title, required: true, placeholder: "材料名" %>
+        </div>
+        <div class="form-group text-center mt-4">
+          <h4 class="text-secondary">pfc値</h4>
+        </div>
+        <div class="form-group d-flex justify-content-around mt-2 mx-auto">
+          <div class="d-inline-block">
+            <%= f.number_field :protein, step: "0.1", required: true, placeholder: "タンパク質" %>
+            <%= label_tag(:protein, "(g)/100g", class:"mr-2") %> 
+          </div>
+          <div class="d-inline-block">
+            <%= f.number_field :fat,  step: "0.1", required: true, placeholder: "脂質" %>
+            <%= label_tag(:fat, "(g)/100g") %>
+          </div>
+          <div class="d-inline-block">
+            <%= f.number_field :carbs, step: "0.1", required: true, placeholder: "糖質" %>
+            <%= label_tag(:carbs, "(g)/100g") %>
+          </div>
+        </div>
+        <div class="form-group text-center mt-4">
+          <h4 class="text-secondary">コスト</h4>
+        </div>
+        <div class="form-group text-center w-75 mt-2 mx-auto">
+          <%= f.number_field :cost, step: "1", required: true, placeholder: "価格" %>
+          <%= label_tag(:cost, "(¥)/100g") %>
+        </div>
+        <div class="form-group text-center w-75 mt-4 mx-auto">
+          <%= f.check_box :meat %>
+          <%= label_tag(:meat, "肉を含む") %>
+          <%= f.check_box :dairy_egg %>
+          <%= label_tag( :dairy_egg, "卵・乳製品を含む") %>
+          <%= f.check_box :seafood %>
+          <%= label_tag(:seafood, "魚介類を含む") %>
+          <%= f.check_box :other_animal %>
+          <%= label_tag(:other_animal, "その他動物性を含む") %>
+          <%= f.check_box :allergen %>
+          <%= label_tag(:allergen, "アレルゲンを含む") %>
+        </div>
+        <div class="actions mt-4">
+          <%= f.submit "登録", class: "btn btn-primary d-block ms-auto" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

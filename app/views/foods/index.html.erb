@@ -1,0 +1,46 @@
+<div class="main">
+  <div class="form-group text-center mt-4">
+    <h2 class="text-secondary">材料一覧</h2>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">＃</th>
+        <th scope="col">材料名</th>
+        <th scope="col">p</th>
+        <th scope="col">f</th>
+        <th scope="col">c</th>
+        <th scope="col">価格</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |i| %>
+        <tr>
+          <th scope="row"><%= i.id %></th>
+          <td><%= i.title %></td>
+          <td><%= i.protein %>g /100g</td>
+          <td><%= i.fat %>g /100g</td>
+          <td><%= i.carbs %>g /100g</td>
+          <td>¥<%= i.cost %> /100g</td>
+          <td class="d-flex justify-content-between">
+            <%= link_to edit_food_path(i) do %>
+              <i class="far fa-edit mr-2"></i>
+            <% end %>
+            <%= link_to food_path(i), method: :delete do %>
+              <i class="fa fa-trash-alt mr-2"></i>
+            <% end %>
+          </td>
+          <%# TODO: フードタイプの表示もする idea：HelperメソッドにtrueならIconを出すようにメソッド  %>
+        </tr>
+      <% end %>  
+    </tbody>
+  </table>
+  <div class="mt-4">
+    <div class="w-75">
+      <%= link_to new_food_path do %>
+        <i class="far fa-2x fa-plus-square ms-auto"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
