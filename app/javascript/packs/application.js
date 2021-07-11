@@ -6,6 +6,7 @@
 // bootstrap 
 import 'bootstrap';
 import '../stylesheets/application';
+import "@fortawesome/fontawesome-free/css/all"
 
 
 import Rails from "@rails/ujs"
