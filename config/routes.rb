@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
 
   #dishes
-  resources :dishes 
-    # resources :ingredients_in_dishes, only: %i(new create destroy ) 
-  
+  resources :dishes do
+    resources :ingredients, only: %i(new create destroy ) 
+  end
 
 end
