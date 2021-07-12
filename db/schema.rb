@@ -10,19 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_11_212047) do
+ActiveRecord::Schema.define(version: 2021_07_11_235542) do
+
+  create_table "dishes", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "prep_time", default: 0, null: false
+    t.integer "cook_time", null: false
+    t.integer "sit_time", default: 0, null: false
+    t.integer "yield", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "foods", force: :cascade do |t|
-    t.string "title", null: false #食材の名前 
-    t.float "protein", null: false #100g当たりのタンパク量（g）
-    t.float "fat", null: false #100g当たりの脂質量（g）
-    t.float "carbs", null: false #100g当たりの炭水化物量（g）
-    t.integer "cost", null: false #100gの価格 （円）
-    t.boolean "allergen", default: false #アレルギー食品であるか
-    t.boolean "meat", default: false #肉を含むか
-    t.boolean "dairy_egg", default: false #乳製品,卵を含むか
-    t.boolean "seafood", default: false #魚介を含むか
-    t.boolean "other_animal", default: false #その他動物由来のものを含むか
+    t.string "title", null: false
+    t.float "protein", null: false
+    t.float "fat", null: false
+    t.float "carbs", null: false
+    t.integer "cost", null: false
+    t.boolean "allergen", default: false
+    t.boolean "meat", default: false
+    t.boolean "dairy_egg", default: false
+    t.boolean "seafood", default: false
+    t.boolean "other_animal", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
