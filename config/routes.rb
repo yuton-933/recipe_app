@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   #foods
   resources :foods, only: %i(new create index destroy edit update) do
   end
+
+  #dishes
+  resources :dishes do
+    resources :ingredients, only: %i(new create destroy ) 
+  end
+
 end

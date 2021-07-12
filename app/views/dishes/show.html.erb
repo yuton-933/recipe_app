@@ -1,0 +1,38 @@
+<div class="main">
+  <div class="text-center mt-4">
+    <h2 class="text-secondary"><%= @dish.title %></h2>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">材料</th>
+        <th scope="col">分量</th>
+        <th scope="col">分量(g)</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dish.ingredients.each do |d| %>
+        <tr>
+          <th scope="row"><%= d.food.title %></th>
+          <td><%= d.unit %></td>
+          <td><%= d.gram %>g</td>
+          <td class="d-flex justify-content-between">
+            <%# ↓↓↓ なぜかparamsがぐちゃぐちゃに渡されるので指定してる %>
+            <%= link_to dish_ingredient_path(id: d.id, dish_id: d.dish_id), method: :delete do %> 
+              <i class="fa fa-trash-alt mr-2"></i>
+            <% end %>
+          </td>
+          <%# TODO: フードタイプの表示もする idea：HelperメソッドにtrueならIconを出すようにメソッド  %>
+        </tr>
+      <% end %>  
+    </tbody>
+  </table>
+  <div class="mt-4">
+    <div class="w-75">
+      <%= link_to new_dish_ingredient_path(@dish) do %>
+        <i class="far fa-2x fa-plus-square ms-auto"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

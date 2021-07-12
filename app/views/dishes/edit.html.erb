@@ -1,0 +1,42 @@
+<div class="main">
+  <div class="card mt-2 w-75 mx-auto">
+    <div class="form-group text-center mt-4">
+      <h2 class="text-secondary">料理編集</h2>
+    </div>
+    <%# TODO: 名前が一緒の時、空の時にエラー吐くようにする idea：redirectをshowに送る→なければエラー %>
+    <div class="form-wrap m-2">
+      <%= form_with model: @dish do |f| %>
+        <div class="form-group text-center w-50 mx-auto mt-2">
+          <%= f.text_field :title, required: true, placeholder: "タイトル" %>
+        </div>
+        <div class="form-group text-center mt-4">
+          <h4 class="text-secondary">トータルタイム</h4>
+        </div>
+        <div class="form-group d-flex justify-content-around mt-2 mx-auto">
+          <div class="d-inline-block">
+            <%= f.number_field :prep_time, step: "1", required: true, placeholder: "下準備時間" %>
+            <%= label_tag(:prep_time, "min", class:"mr-2") %> 
+          </div>
+          <div class="d-inline-block">
+            <%= f.number_field :cook_time,  step: "1", required: true, placeholder: "調理時間" %>
+            <%= label_tag(:cook_time, "min") %>
+          </div>
+          <div class="d-inline-block">
+            <%= f.number_field :sit_time, step: "1", required: true, placeholder: "寝かし、漬け込み 時間" %>
+            <%= label_tag(:sit_time, "min") %>
+          </div>
+        </div>
+        <div class="form-group text-center mt-4">
+          <h4 class="text-secondary">出来上がり量</h4>
+        </div>
+        <div class="form-group text-center w-75 mt-2 mx-auto">
+          <%= f.number_field :yield, step: "1", required: true %>
+          <%= label_tag(:yeild, "人前") %>
+        </div>
+        <div class="actions mt-4">
+          <%= f.submit "更新", class: "btn btn-primary d-block ms-auto" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
