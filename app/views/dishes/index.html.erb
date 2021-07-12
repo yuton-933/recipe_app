@@ -1,0 +1,48 @@
+<div class="main">
+  <div class="form-group text-center mt-4">
+    <h2 class="text-secondary">料理一覧</h2>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">料理タイトル</th>
+        <th scope="col">下処理時間</th>
+        <th scope="col">調理時間</th>
+        <th scope="col">発酵/漬け込み 時間</th>
+        <th scope="col">出来上がり量</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dishes.each do |d| %>
+        <tr>
+          <th scope="row">
+            <%= link_to dish_path(d) do %>
+              <%= d.title %>
+            <% end %>
+          </th>
+          <td><%= d.prep_time %>分</td>
+          <td><%= d.cook_time %>分</td>
+          <td><%= d.sit_time %>分</td>
+          <td><%= d.yield %>人前</td>
+          <td class="d-flex justify-content-between">
+            <%= link_to edit_dish_path(d) do %>
+              <i class="far fa-edit mr-2"></i>
+            <% end %>
+            <%= link_to dish_path(d), method: :delete do %>
+              <i class="fa fa-trash-alt mr-2"></i>
+            <% end %>
+          </td>
+          <%# TODO: フードタイプの表示もする idea：HelperメソッドにtrueならIconを出すようにメソッド  %>
+        </tr>
+      <% end %>  
+    </tbody>
+  </table>
+  <div class="mt-4">
+    <div class="w-75">
+      <%= link_to new_dish_path do %>
+        <i class="far fa-2x fa-plus-square ms-auto"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
