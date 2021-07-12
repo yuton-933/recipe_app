@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @dish.ingredient.each do |d| %>
+      <% @dish.ingredients.each do |d| %>
         <tr>
           <th scope="row"><%= d.food.title %></th>
           <td><%= d.unit %></td>
